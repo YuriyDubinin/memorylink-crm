@@ -1,0 +1,36 @@
+.document {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.main-wrapper {
+    padding-top: 65px;
+    height: 100%;
+}
+
+.main-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.locked__plug {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100vw;
+    height: 100vh;
+    color: var(--grey-2);
+    font-size: 20px;
+
+    svg {
+        width: 50px;
+        height: 50px;
+        fill: var(--grey-2);
+        animation: simple-shining 3s ease infinite;
+    }
+}

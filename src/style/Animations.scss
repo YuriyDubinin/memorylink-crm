@@ -1,0 +1,125 @@
+@keyframes simple-appearance {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes sliding-on-left-side {
+    0% {
+        position: relative;
+        top: 0;
+        left: -50%;
+    }
+    100% {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+}
+
+@keyframes sliding-on-bottom-side {
+    0% {
+        position: relative;
+        bottom: -50%;
+        left: 0;
+    }
+    100% {
+        position: relative;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+@keyframes sliding-on-right-side {
+    0% {
+        position: relative;
+        right: -50%;
+        top: 0;
+    }
+    100% {
+        position: relative;
+        right: 0;
+        top: 0;
+    }
+}
+
+@keyframes sliding-on-top-side {
+    0% {
+        position: relative;
+        left: 0;
+        top: -50%;
+    }
+    100% {
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+}
+
+@keyframes smooth-resizing {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes neuro-light-appearance {
+    0% {
+        background-color: transparent;
+        box-shadow: 0px 0px 0px #bebebe00, 0px 0px 0px #ffffff00;
+    }
+    100% {
+        background-color: var(--app--header-background);
+        box-shadow: 10px 10px 30px #bebebe, -10px -10px 30px #ffffff;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        transform: scale3d(1.15, 1.15, 1.15);
+    }
+
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes default-form-child-appearance {
+    0% {
+        opacity: 0;
+        left: 0;
+        bottom: -20px;
+    }
+
+    100% {
+        opacity: 1;
+        left: 0;
+        bottom: 0;
+    }
+}
+
+@keyframes simple-shining {
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}

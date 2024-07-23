@@ -1,0 +1,66 @@
+.main-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    animation: neuro-light-appearance 0.3s ease 0.1s forwards;
+}
+
+.main-header__bars {
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header__bar {
+    display: flex;
+}
+
+.main-header__bar-item {
+    position: relative;
+}
+
+.main-header__bar-icon {
+    z-index: 2;
+    max-width: 50px;
+    max-height: 50px;
+    padding: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: simple-appearance 0.3s ease 0.5s forwards;
+
+    svg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &:hover {
+        transform: scale(1.12);
+    }
+}
+
+.main-header__bar-icon-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: 15px;
+    max-height: 15px;
+
+    svg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        animation: simple-appearance 0.3s ease 0.5s forwards;
+    }
+
+    &_not-auth {
+        right: 35px;
+    }
+}

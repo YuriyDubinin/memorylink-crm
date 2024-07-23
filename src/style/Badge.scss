@@ -1,0 +1,31 @@
+.badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 6px;
+    padding: 2px 6px;
+    color: #808080;
+    background-color: rgba(0, 0, 0, 0.05);
+
+    &_success {
+        background-color: #e8fde8;
+        color: var(--green);
+    }
+    &_danger {
+        background-color: #fde9e5;
+        color: var(--red);
+    }
+    &_warning {
+        background-color: #ffeed8;
+        color: var(--orange);
+    }
+    &_primary {
+        background-color: #dee8ff;
+        color: #2962ff;
+    }
+    &_default {
+        background: #e5e5e5;
+        color: #7f858c;
+    }
+}

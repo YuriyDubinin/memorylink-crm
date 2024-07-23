@@ -1,0 +1,41 @@
+.loader {
+    position: relative;
+    width: 65px;
+    height: 65px;
+
+    svg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.loader__extra-layer {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    animation: pulse 3s ease infinite, loader-shining 3s ease infinite;
+
+    svg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@keyframes loader-shining {
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}

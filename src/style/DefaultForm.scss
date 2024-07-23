@@ -1,0 +1,112 @@
+// This file describes the style for the standard form, that is, the inputs and buttons used 'by default'
+
+.default-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.default-form__input-wrapper {
+    position: relative;
+}
+
+.default-form__input {
+    display: block;
+    width: 100%;
+    height: 2.5rem;
+    margin-bottom: 15px;
+    padding: 0.5rem 0.9rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--app-input-color);
+    border: 1px solid var(--app-input-border-color);
+    background-color: #fff;
+    border-radius: 6px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:focus {
+        outline: none;
+    }
+
+    &_read-only {
+        background-color: var(--grey-e);
+        cursor: auto;
+        color: var(--grey-1);
+        text-overflow: ellipsis;
+    }
+}
+
+.default-form__select {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height: 2.5rem;
+    margin-bottom: 15px;
+    padding: 0.5rem 0.9rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--app-input-color);
+    border: 1px solid var(--app-input-border-color);
+    border-radius: 6px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+    background-image: url('../assets/triangle-down.svg');
+    background-repeat: no-repeat, repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 12px;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.default-form__checkbox {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.default-form__error-message {
+    font-size: 10px;
+    color: var(--error);
+    opacity: 0;
+    position: absolute;
+    top: 15px;
+    right: 3px;
+    animation: error-message-appearance 0.3s ease 0.1s forwards;
+}
+
+.default-form__submit-btn {
+    cursor: pointer;
+    height: 40px;
+    width: 100%;
+    font-weight: 400;
+    border-radius: 6px;
+    border: 0;
+    color: var(--app-input-btn-color);
+    background-color: var(--app-input-btn-background);
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: var(--app-input-btn-hover);
+    }
+}
+
+@keyframes error-message-appearance {
+    0% {
+        opacity: 0;
+        top: 15px;
+        right: 3px;
+    }
+
+    100% {
+        opacity: 1;
+        top: 3px;
+        right: 3px;
+    }
+}
