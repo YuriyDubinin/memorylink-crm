@@ -1,8 +1,26 @@
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
-export const createUser = (query) => {
+export const createUser = (data) => {
     return axios
-        .post('http://localhost:3305/users/user', query)
+        .post('http://localhost:3305/users/user', data)
         .then((resp) => resp)
-        .catch((err) => console.log(err));
+        .catch((error) => console.error(error));
+};
+
+export const deleteUser = (data) => {
+    return axios
+        .delete('http://localhost:3305/users/user/key', {params: data})
+        .then((resp) => {
+            toast('Пользователь удален', {
+                icon: '✅️',
+            });
+            return resp;
+        })
+        .catch((error) => {
+            console.error(error);
+            toast(`Пользователь не удален\n${error.message}`, {
+                icon: '🚫',
+            });
+        });
 };

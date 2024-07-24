@@ -72,16 +72,15 @@ const CreateUserForm = () => {
         }
 
         createUser(formData)
-        .then((resp) => {
-            console.log(resp)
-            const link = 'http://localhost:3001/';
-            const totalLink = `${link}${resp.data.data.key}`;
+            .then((resp) => {
+                console.log(resp);
+                const link = 'http://localhost:3001/';
+                const totalLink = `${link}${resp.data.data.key}`;
 
-            setKey(resp.data.data.key);
-            setUserLink(totalLink);
-
-        })
-        .catch((err) => console.error(err))
+                setKey(resp.data.data.key);
+                setUserLink(totalLink);
+            })
+            .catch((err) => console.error(err));
     };
 
     return (
@@ -157,7 +156,7 @@ const CreateUserForm = () => {
                                     placeholder="Отчество"
                                     {...register('patronymic')}
                                 />
-                                {errors.email && (
+                                {errors.patronymic && (
                                     <span className="default-form__error-message">
                                         {errors.patronymic?.message}
                                     </span>
@@ -179,7 +178,7 @@ const CreateUserForm = () => {
                                     placeholder="Телефон"
                                     {...register('phone')}
                                 />
-                                {errors.email && (
+                                {errors.phone && (
                                     <span className="default-form__error-message">
                                         {errors.phone?.message}
                                     </span>
