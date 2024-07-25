@@ -12,7 +12,7 @@ const App = () => {
             <Layout>
                 <Suspense>
                     <Routes>
-                        <Route path="/" element={<CreatePage />} />
+                        <Route path="/" element={<>AUTH_PAGE</>} />
                         <Route path="/create" element={<CreatePage />} />
                         <Route path="/delete" element={<DeletePage />} />
                     </Routes>
