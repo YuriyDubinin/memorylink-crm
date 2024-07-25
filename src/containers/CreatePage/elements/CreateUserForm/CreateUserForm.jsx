@@ -74,8 +74,10 @@ const CreateUserForm = () => {
         createUser(formData)
             .then((resp) => {
                 console.log(resp);
-                const link = 'http://localhost:3001/';
-                const totalLink = `${link}${resp.data.data.key}`;
+                const clientHost = 'http://localhost:3001/';
+                const totalLink = `${clientHost}${resp.data.data.key}?id=${resp.data.data.id}`;
+
+                console.log('totalLink: ', totalLink);
 
                 setKey(resp.data.data.key);
                 setUserLink(totalLink);

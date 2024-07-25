@@ -4,8 +4,18 @@ import toast from 'react-hot-toast';
 export const createUser = (data) => {
     return axios
         .post('http://localhost:3305/users/user', data)
-        .then((resp) => resp)
-        .catch((error) => console.error(error));
+        .then((resp) => {
+            toast('Пользователь создан', {
+                icon: '✅️',
+            });
+            return resp;
+        })
+        .catch((error) => {
+            console.error(error);
+            toast(`Пользователь не создан\n${error.message}`, {
+                icon: '🚫',
+            });
+        });
 };
 
 export const deleteUser = (data) => {
