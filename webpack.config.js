@@ -5,7 +5,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
-const production = process.env.NODE_ENV === 'production';
+function getJSONConfig(configDir, configName) {
+    const configPath = require(configDir + '/' + configName);
+    return configPath;
+}
+
+const PRODUCTION_MODE = process.env.NODE_ENV === 'production';
+const CLIENT_CONFIGS_DIR = path.resolve(__dirname, './configs');
+const CONFIG_NAME = 'prod.json';
+const JSON_CONFIG = getJSONConfig(CLIENT_CONFIGS_DIR, CONFIG_NAME);
 
 module.exports = {
     entry: {
@@ -13,7 +21,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: production ? '[name].[contenthash].js' : '[name].js',
+        filename: PRODUCTION_MODE ? '[name].[contenthash].js' : '[name].js',
         clean: true,
         publicPath: '/',
     },
@@ -22,9 +30,10 @@ module.exports = {
             title: 'Memorulink CRM',
             template: './src/index.html',
             favicon: './src/public/favicon.ico',
+            __CONFIG: JSON.stringify(JSON_CONFIG),
         }),
         new MiniCssExtractPlugin({
-            filename: production ? '[name].[contenthash].css' : '[name].css',
+            filename: PRODUCTION_MODE ? '[name].[contenthash].css' : '[name].css',
         }),
         new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin(),
@@ -34,7 +43,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    ...(production ? [MiniCssExtractPlugin.loader] : ['style-loader']),
+                    ...(PRODUCTION_MODE ? [MiniCssExtractPlugin.loader] : ['style-loader']),
                     'css-loader',
                 ],
             },
@@ -42,7 +51,7 @@ module.exports = {
                 test: /\.scss$/,
                 exclude: ['/node_modules'],
                 use: [
-                    ...(production ? [MiniCssExtractPlugin.loader] : ['style-loader']),
+                    ...(PRODUCTION_MODE ? [MiniCssExtractPlugin.loader] : ['style-loader']),
                     'css-loader',
                     'sass-loader',
                 ],
@@ -77,5 +86,5 @@ module.exports = {
         hot: true,
         historyApiFallback: true,
     },
-    mode: production ? 'production' : 'development',
+    mode: PRODUCTION_MODE ? 'production' : 'development',
 };

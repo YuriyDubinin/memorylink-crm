@@ -1,0 +1,6 @@
+{
+    "isDev": false,
+    "connections": {
+        "CLIENT_HOST": "http://localhost:3301"
+    }
+}

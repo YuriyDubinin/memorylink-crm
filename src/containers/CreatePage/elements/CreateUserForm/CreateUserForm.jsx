@@ -50,21 +50,23 @@ const CreateUserForm = () => {
 
     const onSubmit = (data) => {
         const formData = new FormData();
-        const {name, surname, patronymic, phone, email, address, photos, videos} = data;
+        const {photos, videos} = data;
 
-        name ? formData.append('name', name) : null;
-        surname ? formData.append('surname', surname) : null;
-        patronymic ? formData.append('patronymic', patronymic) : null;
-        phone ? formData.append('phone', phone) : null;
-        email ? formData.append('email', email) : null;
-        address ? formData.append('address', address) : null;
+        // For simple fields
+        Object.entries(data).forEach(([key, value]) => {
+            if (value) {
+                formData.append(key, value);
+            }
+        });
 
+        // For complex field
         if (photos && photos.length) {
             for (let i = 0; i < photos.length; i++) {
                 formData.append('photos', photos[i]);
             }
         }
 
+        // For complex field
         if (videos && videos.length) {
             for (let i = 0; i < videos.length; i++) {
                 formData.append('videos', videos[i]);
@@ -73,8 +75,9 @@ const CreateUserForm = () => {
 
         createUser(formData)
             .then((resp) => {
-                const clientHost = 'http://localhost:3001/';
-                const totalLink = `${clientHost}${resp.data.data.key}?id=${resp.data.data.id}`;
+                // eslint-disable-next-line no-undef
+                const clientHost = __CONFIG.connections.CLIENT_HOST;
+                const totalLink = `${clientHost}/${resp.data.data.key}?id=${resp.data.data.id}`;
 
                 setKey(resp.data.data.key);
                 setUserLink(totalLink);
@@ -89,7 +92,7 @@ const CreateUserForm = () => {
                     className="cheat"
                     onClick={() =>
                         onSubmit({
-                            name: 'Ololowa',
+                            name: 'Ololo',
                             surname: 'LOL',
                             patronymic: 'Lolovich',
                             phone: '+79787787878',
