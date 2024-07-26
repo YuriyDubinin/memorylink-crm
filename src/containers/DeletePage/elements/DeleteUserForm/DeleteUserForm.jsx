@@ -26,11 +26,6 @@ const DeleteUserForm = () => {
     };
 
     const onSubmit = (data) => {
-        const formData = new FormData();
-        const {key} = data;
-
-        formData.append('key', key);
-
         deleteUser(data).then(() => reset());
     };
 

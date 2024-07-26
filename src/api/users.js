@@ -28,7 +28,7 @@ export const deleteUser = (data) => {
             return resp;
         })
         .catch((error) => {
-            console.error(error);
+            console.error(error.response.data);
             toast(`Пользователь не удален\n${error.message}`, {
                 icon: '🚫',
             });
