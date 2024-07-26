@@ -52,12 +52,12 @@ const CreateUserForm = () => {
         const formData = new FormData();
         const {name, surname, patronymic, phone, email, address, photos, videos} = data;
 
-        formData.append('name', name);
-        formData.append('surname', surname);
-        formData.append('patronymic', patronymic);
-        formData.append('phone', phone);
-        formData.append('email', email);
-        formData.append('address', address);
+        name ? formData.append('name', name) : null;
+        surname ? formData.append('surname', surname) : null;
+        patronymic ? formData.append('patronymic', patronymic) : null;
+        phone ? formData.append('phone', phone) : null;
+        email ? formData.append('email', email) : null;
+        address ? formData.append('address', address) : null;
 
         if (photos && photos.length) {
             for (let i = 0; i < photos.length; i++) {
@@ -73,7 +73,6 @@ const CreateUserForm = () => {
 
         createUser(formData)
             .then((resp) => {
-                console.log(resp);
                 const clientHost = 'http://localhost:3001/';
                 const totalLink = `${clientHost}${resp.data.data.key}?id=${resp.data.data.id}`;
 
@@ -86,6 +85,22 @@ const CreateUserForm = () => {
     return (
         <>
             <div className="create-user-form">
+                <div
+                    className="cheat"
+                    onClick={() =>
+                        onSubmit({
+                            name: 'Ololowa',
+                            surname: 'LOL',
+                            patronymic: 'Lolovich',
+                            phone: '+79787787878',
+                            email: 'ololo@lol.com',
+                            address:
+                                'Улица Ололовича Оловского, оголо магазина "Луковица", дом 500, квартира 700',
+                        })
+                    }
+                >
+                    <InfoIcon />
+                </div>
                 <div className="create-user-form__row">
                     <div className="create-user-form__header">Создание нового пользователя</div>
                     <div className="create-user-form__body">

@@ -1,4 +1,16 @@
+.cheat {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    svg {
+        width: 45px;
+        height: 45px;
+    }
+}
+
 .create-user-form {
+    position: relative; // cheat
     width: 400px;
     border-radius: 25px;
     animation: neuro-light-appearance 0.3s ease 0.3s forwards;
@@ -32,10 +44,9 @@
 }
 
 .create-user-form__qr {
-    margin-left: 40px;
+    max-width: 400px;
     padding: 20px;
-    width: 400px;
-    height: 400px;
+    width: 100%;
     border-radius: 25px;
     animation: neuro-light-appearance 0.3s ease 0.3s forwards;
 
@@ -46,7 +57,6 @@
 }
 
 .create-user-form__key {
-    margin-left: 40px;
     padding: 20px;
     width: 400px;
     border-radius: 25px;

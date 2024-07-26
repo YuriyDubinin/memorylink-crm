@@ -11,7 +11,7 @@ export const createUser = (data) => {
             return resp;
         })
         .catch((error) => {
-            console.error(error);
+            console.error(error.response.data);
             toast(`Пользователь не создан\n${error.message}`, {
                 icon: '🚫',
             });
