@@ -6,6 +6,8 @@ import './style/DeleteUserForm.scss';
 
 import InfoIcon from './assets/info.svg?jsx';
 
+import {validateSimpleRequired} from '../../../../helpers/validation';
+
 import {deleteUser} from '../../../../api/users';
 
 const DeleteUserForm = () => {
@@ -47,6 +49,7 @@ const DeleteUserForm = () => {
                                     onClick={() => {
                                         toast(fieldDescription.key, {
                                             icon: 'ℹ️',
+                                            duration: 1500,
                                         });
                                     }}
                                 >
@@ -55,12 +58,13 @@ const DeleteUserForm = () => {
                                 <input
                                     className="default-form__input"
                                     placeholder="key"
-                                    {...register('key')}
+                                    {...register('key', {
+                                        validate: (value) => validateSimpleRequired(value, true),
+                                    })}
                                 />
                                 {errors.key && (
                                     <span className="default-form__error-message">
                                         {errors.key?.message}
-                                        обязательное поле
                                     </span>
                                 )}
                             </div>

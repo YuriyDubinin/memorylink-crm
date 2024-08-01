@@ -1,0 +1,90 @@
+.update-user-form {
+    position: relative; // cheat
+    width: 400px;
+    border-radius: 25px;
+    animation: neuro-light-appearance 0.3s ease 0.3s forwards;
+}
+
+.update-user-form__row {
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    color: var(--grey-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.update-user-form__header {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: simple-appearance 0.3s ease 0.5s forwards;
+}
+
+.update-user-form__body {
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.update-user-form__qr {
+    max-width: 400px;
+    padding: 20px;
+    width: 100%;
+    border-radius: 25px;
+    animation: neuro-light-appearance 0.3s ease 0.3s forwards;
+
+    :nth-child(1) {
+        opacity: 0;
+        animation: simple-appearance 0.3s ease 0.5s forwards;
+    }
+}
+
+.update-user-form__key {
+    padding: 20px;
+    width: 400px;
+    border-radius: 25px;
+    animation: neuro-light-appearance 0.3s ease 0.3s forwards;
+
+    :nth-child(1) {
+        opacity: 0;
+        animation: simple-appearance 0.3s ease 0.5s forwards;
+        margin-bottom: 5px;
+    }
+
+    :nth-child(2) {
+        opacity: 0;
+        animation: simple-appearance 0.3s ease 0.5s forwards;
+        color: var(--grey-2);
+        word-break: break-all;
+    }
+}
+
+.update-user-form__info-icon {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 2px;
+    left: -33px;
+
+    svg {
+        cursor: pointer;
+        width: 35px;
+        height: 35px;
+    }
+}
+
+.update-user-form__input {
+    opacity: 0;
+    animation: simple-appearance 0.3s ease 0.5s forwards;
+}
+
+.update-user-form__submit-btn {
+    opacity: 0;
+    animation: simple-appearance 0.3s ease 0.5s forwards;
+}

@@ -7,6 +7,7 @@ export const createUser = (data) => {
         .then((resp) => {
             toast('Пользователь создан', {
                 icon: '✅️',
+                duration: 1500,
             });
             return resp;
         })
@@ -14,6 +15,7 @@ export const createUser = (data) => {
             console.error(error.response.data);
             toast(`Пользователь не создан\n${error.message}`, {
                 icon: '🚫',
+                duration: 1500,
             });
         });
 };
@@ -24,6 +26,7 @@ export const deleteUser = (data) => {
         .then((resp) => {
             toast('Пользователь удален', {
                 icon: '✅️',
+                duration: 1500,
             });
             return resp;
         })
@@ -31,6 +34,7 @@ export const deleteUser = (data) => {
             console.error(error.response.data);
             toast(`Пользователь не удален\n${error.message}`, {
                 icon: '🚫',
+                duration: 1500,
             });
         });
 };

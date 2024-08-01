@@ -4,7 +4,7 @@ import './style/Layout.scss';
 
 import LockedIcon from './assets/locked-user.svg?jsx';
 
-import Header from './components/Header/Header';
+import Header from './elements/Header/Header';
 
 const Layout = ({children}) => {
     const [auth, setAuth] = useState(true);

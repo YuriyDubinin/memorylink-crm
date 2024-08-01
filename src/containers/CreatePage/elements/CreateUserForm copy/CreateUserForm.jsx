@@ -9,7 +9,7 @@ import InfoIcon from './assets/info.svg?jsx';
 
 import {createUser} from '../../../../api/users';
 
-import {validateEmail, validateSimpleRequired} from '../../../../helpers/validation';
+import {validateEmail} from '../../../../helpers/validation';
 
 const CreateUserForm = () => {
     const [key, setKey] = useState(null);
@@ -128,9 +128,7 @@ const CreateUserForm = () => {
                                 <input
                                     className="default-form__input"
                                     placeholder="Имя"
-                                    {...register('name', {
-                                        validate: (value) => validateSimpleRequired(value, true),
-                                    })}
+                                    {...register('name')}
                                 />
                                 {errors.name && (
                                     <span className="default-form__error-message">
@@ -154,9 +152,7 @@ const CreateUserForm = () => {
                                 <input
                                     className="default-form__input"
                                     placeholder="Фамилия"
-                                    {...register('surname', {
-                                        validate: (value) => validateSimpleRequired(value, true),
-                                    })}
+                                    {...register('surname')}
                                 />
                                 {errors.surname && (
                                     <span className="default-form__error-message">
@@ -179,9 +175,7 @@ const CreateUserForm = () => {
                                 <input
                                     className="default-form__input"
                                     placeholder="Отчество"
-                                    {...register('patronymic', {
-                                        validate: (value) => validateSimpleRequired(value, true),
-                                    })}
+                                    {...register('patronymic')}
                                 />
                                 {errors.patronymic && (
                                     <span className="default-form__error-message">
@@ -204,9 +198,7 @@ const CreateUserForm = () => {
                                 <input
                                     className="default-form__input"
                                     placeholder="Телефон"
-                                    {...register('phone', {
-                                        validate: (value) => validateSimpleRequired(value, true),
-                                    })}
+                                    {...register('phone')}
                                 />
                                 {errors.phone && (
                                     <span className="default-form__error-message">
@@ -254,9 +246,7 @@ const CreateUserForm = () => {
                                 <input
                                     className="default-form__input"
                                     placeholder="Адрес"
-                                    {...register('address', {
-                                        validate: (value) => validateSimpleRequired(value, true),
-                                    })}
+                                    {...register('address')}
                                 />
                                 {errors.email && (
                                     <span className="default-form__error-message">

@@ -4,6 +4,7 @@ import {Toaster} from 'react-hot-toast';
 
 import Layout from '../layouts/Layout';
 import CreatePage from '../containers/CreatePage/CreatePage';
+import EditPage from '../containers/EditPage/EditPage';
 import DeletePage from '../containers/DeletePage/DeletePage';
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<>AUTH_PAGE</>} />
                         <Route path="/create" element={<CreatePage />} />
+                        <Route path="/edit" element={<EditPage />} />
                         <Route path="/delete" element={<DeletePage />} />
                     </Routes>
                 </Suspense>

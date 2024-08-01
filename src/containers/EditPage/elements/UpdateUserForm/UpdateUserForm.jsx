@@ -3,13 +3,13 @@ import {useForm} from 'react-hook-form';
 import toast from 'react-hot-toast';
 import QRCode from 'react-qr-code';
 
-import './style/CreateUserForm.scss';
+import './style/UpdateUserForm.scss';
 
 import InfoIcon from './assets/info.svg?jsx';
 
 import {createUser} from '../../../../api/users';
 
-import {validateEmail, validateSimpleRequired} from '../../../../helpers/validation';
+import {validateSimpleRequired} from '../../../../helpers/validation';
 
 const CreateUserForm = () => {
     const [key, setKey] = useState(null);
@@ -23,6 +23,7 @@ const CreateUserForm = () => {
         mode: 'all',
         defaultValues: {
             date: Date.now(),
+            uniqueKey: '',
             name: '',
             surname: '',
             patronymic: '',
@@ -37,6 +38,7 @@ const CreateUserForm = () => {
     });
 
     const fieldDescription = {
+        uniqueKey: 'Уникальный ключ пользователя',
         name: 'Имя пользователя',
         surname: 'Фамилия пользователя',
         patronymic: 'Отчество пользователя',
@@ -87,35 +89,44 @@ const CreateUserForm = () => {
 
     return (
         <>
-            <div className="create-user-form">
-                <div
-                    className="cheat"
-                    onClick={() =>
-                        onSubmit({
-                            name: 'Ololo',
-                            surname: 'LOL',
-                            patronymic: 'Lolovich',
-                            phone: '+79787787878',
-                            email: 'ololo@lol.com',
-                            address:
-                                'Улица Ололовича Оловского, оголо магазина "Луковица", дом 500, квартира 700',
-                        })
-                    }
-                >
-                    <InfoIcon />
-                </div>
-                <div className="create-user-form__row">
-                    <div className="create-user-form__header">Создание нового пользователя</div>
-                    <div className="create-user-form__body">
+            <div className="update-user-form">
+                <div className="update-user-form__row">
+                    <div className="update-user-form__header">Редактирование пользователя</div>
+                    <div className="update-user-form__body">
                         <form
-                            className="create-user-form__body default-form"
+                            className="update-user-form__body default-form"
                             method="post"
                             encType="multipart/form-data"
                             onSubmit={handleSubmit(onSubmit)}
                         >
-                            <div className="default-form__input-wrapper create-user-form__input">
+                            <div className="default-form__input-wrapper update-user-form__input">
                                 <div
-                                    className="create-user-form__info-icon"
+                                    className="update-user-form__info-icon"
+                                    onClick={() => {
+                                        toast(fieldDescription.uniqueKey, {
+                                            icon: 'ℹ️',
+                                            duration: 1500,
+                                        });
+                                    }}
+                                >
+                                    <InfoIcon />
+                                </div>
+                                <input
+                                    className="default-form__input"
+                                    placeholder="Ключ"
+                                    {...register('uniqueKey', {
+                                        validate: (value) => validateSimpleRequired(value, true),
+                                    })}
+                                />
+                                {errors.uniqueKey && (
+                                    <span className="default-form__error-message">
+                                        {errors.uniqueKey?.message}
+                                    </span>
+                                )}
+                            </div>
+                            <div className="default-form__input-wrapper update-user-form__input">
+                                <div
+                                    className="update-user-form__info-icon"
                                     onClick={() => {
                                         toast(fieldDescription.name, {
                                             icon: 'ℹ️',
@@ -128,9 +139,7 @@ const CreateUserForm = () => {
                                 <input
                                     className="default-form__input"
                                     placeholder="Имя"
-                                    {...register('name', {
-                                        validate: (value) => validateSimpleRequired(value, true),
-                                    })}
+                                    {...register('name')}
                                 />
                                 {errors.name && (
                                     <span className="default-form__error-message">
@@ -139,9 +148,9 @@ const CreateUserForm = () => {
                                     </span>
                                 )}
                             </div>
-                            <div className="default-form__input-wrapper create-user-form__input">
+                            <div className="default-form__input-wrapper update-user-form__input">
                                 <div
-                                    className="create-user-form__info-icon"
+                                    className="update-user-form__info-icon"
                                     onClick={() => {
                                         toast(fieldDescription.surname, {
                                             icon: 'ℹ️',
@@ -154,9 +163,7 @@ const CreateUserForm = () => {
                                 <input
                                     className="default-form__input"
                                     placeholder="Фамилия"
-                                    {...register('surname', {
-                                        validate: (value) => validateSimpleRequired(value, true),
-                                    })}
+                                    {...register('surname')}
                                 />
                                 {errors.surname && (
                                     <span className="default-form__error-message">
@@ -164,9 +171,9 @@ const CreateUserForm = () => {
                                     </span>
                                 )}
                             </div>
-                            <div className="default-form__input-wrapper create-user-form__input">
+                            <div className="default-form__input-wrapper update-user-form__input">
                                 <div
-                                    className="create-user-form__info-icon"
+                                    className="update-user-form__info-icon"
                                     onClick={() => {
                                         toast(fieldDescription.patronymic, {
                                             icon: 'ℹ️',
@@ -179,9 +186,7 @@ const CreateUserForm = () => {
                                 <input
                                     className="default-form__input"
                                     placeholder="Отчество"
-                                    {...register('patronymic', {
-                                        validate: (value) => validateSimpleRequired(value, true),
-                                    })}
+                                    {...register('patronymic')}
                                 />
                                 {errors.patronymic && (
                                     <span className="default-form__error-message">
@@ -189,9 +194,9 @@ const CreateUserForm = () => {
                                     </span>
                                 )}
                             </div>
-                            <div className="default-form__input-wrapper create-user-form__input">
+                            <div className="default-form__input-wrapper update-user-form__input">
                                 <div
-                                    className="create-user-form__info-icon"
+                                    className="update-user-form__info-icon"
                                     onClick={() => {
                                         toast(fieldDescription.phone, {
                                             icon: 'ℹ️',
@@ -204,9 +209,7 @@ const CreateUserForm = () => {
                                 <input
                                     className="default-form__input"
                                     placeholder="Телефон"
-                                    {...register('phone', {
-                                        validate: (value) => validateSimpleRequired(value, true),
-                                    })}
+                                    {...register('phone')}
                                 />
                                 {errors.phone && (
                                     <span className="default-form__error-message">
@@ -214,9 +217,9 @@ const CreateUserForm = () => {
                                     </span>
                                 )}
                             </div>
-                            <div className="default-form__input-wrapper create-user-form__input">
+                            <div className="default-form__input-wrapper update-user-form__input">
                                 <div
-                                    className="create-user-form__info-icon"
+                                    className="update-user-form__info-icon"
                                     onClick={() => {
                                         toast(fieldDescription.email, {
                                             icon: 'ℹ️',
@@ -229,9 +232,7 @@ const CreateUserForm = () => {
                                 <input
                                     className="default-form__input"
                                     placeholder="Почта"
-                                    {...register('email', {
-                                        validate: (value) => validateEmail(value, true),
-                                    })}
+                                    {...register('email')}
                                 />
                                 {errors.email && (
                                     <span className="default-form__error-message">
@@ -239,9 +240,9 @@ const CreateUserForm = () => {
                                     </span>
                                 )}
                             </div>
-                            <div className="default-form__input-wrapper create-user-form__input">
+                            <div className="default-form__input-wrapper update-user-form__input">
                                 <div
-                                    className="create-user-form__info-icon"
+                                    className="update-user-form__info-icon"
                                     onClick={() => {
                                         toast(fieldDescription.address, {
                                             icon: 'ℹ️',
@@ -254,9 +255,7 @@ const CreateUserForm = () => {
                                 <input
                                     className="default-form__input"
                                     placeholder="Адрес"
-                                    {...register('address', {
-                                        validate: (value) => validateSimpleRequired(value, true),
-                                    })}
+                                    {...register('address')}
                                 />
                                 {errors.email && (
                                     <span className="default-form__error-message">
@@ -264,9 +263,9 @@ const CreateUserForm = () => {
                                     </span>
                                 )}
                             </div>
-                            <div className="default-form__input-wrapper create-user-form__input">
+                            <div className="default-form__input-wrapper update-user-form__input">
                                 <div
-                                    className="create-user-form__info-icon"
+                                    className="update-user-form__info-icon"
                                     onClick={() => {
                                         toast(fieldDescription.photos, {
                                             icon: 'ℹ️',
@@ -291,10 +290,9 @@ const CreateUserForm = () => {
                                     </span>
                                 )}
                             </div>
-
-                            <div className="default-form__input-wrapper create-user-form__input">
+                            <div className="default-form__input-wrapper update-user-form__input">
                                 <div
-                                    className="create-user-form__info-icon"
+                                    className="update-user-form__info-icon"
                                     onClick={() => {
                                         toast(fieldDescription.videos, {
                                             icon: 'ℹ️',
@@ -319,8 +317,7 @@ const CreateUserForm = () => {
                                     </span>
                                 )}
                             </div>
-
-                            <div className="default-form__input-wrapper create-user-form__input">
+                            <div className="default-form__input-wrapper update-user-form__input">
                                 <label>
                                     <input
                                         {...register('closedAccount')}
@@ -332,16 +329,16 @@ const CreateUserForm = () => {
                             </div>
                             <button
                                 type="submit"
-                                className="default-form__submit-btn create-user-form__submit-btn"
+                                className="default-form__submit-btn update-user-form__submit-btn"
                             >
-                                Создать
+                                Редактировать
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
             {userLink && (
-                <div className="create-user-form__qr">
+                <div className="update-user-form__qr">
                     <QRCode
                         size={256}
                         style={{height: 'auto', maxWidth: '100%', width: '100%'}}
@@ -351,7 +348,7 @@ const CreateUserForm = () => {
                 </div>
             )}
             {key && (
-                <div className="create-user-form__key">
+                <div className="update-user-form__key">
                     <p>Ваш уникальный ключ:</p>
                     <span>{key}</span>
                 </div>
