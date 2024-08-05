@@ -1,7 +1,7 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 
-import './style/Notifications.scss';
+import './Notifications.scss';
 
 import NoticeBell from './assets/notification-bing.svg?jsx';
 

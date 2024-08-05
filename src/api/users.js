@@ -20,6 +20,25 @@ export const createUser = (data) => {
         });
 };
 
+export const updateUser = (data) => {
+    return axios
+        .put('http://localhost:3305/users/user', data)
+        .then((resp) => {
+            toast('Пользователь обновлён', {
+                icon: '✅️',
+                duration: 1500,
+            });
+            return resp;
+        })
+        .catch((error) => {
+            console.error(error.response.data);
+            toast(`Пользователь не обновлён\n${error.message}`, {
+                icon: '🚫',
+                duration: 1500,
+            });
+        });
+};
+
 export const deleteUser = (data) => {
     return axios
         .delete('http://localhost:3305/users/user/key', {params: data})

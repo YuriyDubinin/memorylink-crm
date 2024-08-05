@@ -3,7 +3,7 @@ import {useForm} from 'react-hook-form';
 import toast from 'react-hot-toast';
 import QRCode from 'react-qr-code';
 
-import './style/CreateUserForm.scss';
+import './CreateUserForm.scss';
 
 import InfoIcon from './assets/info.svg?jsx';
 
@@ -22,7 +22,6 @@ const CreateUserForm = () => {
     } = useForm({
         mode: 'all',
         defaultValues: {
-            date: Date.now(),
             name: '',
             surname: '',
             patronymic: '',
@@ -90,7 +89,7 @@ const CreateUserForm = () => {
             <div className="create-user-form">
                 <div
                     className="cheat"
-                    onClick={() =>
+                    onClick={() => {
                         onSubmit({
                             name: 'Ololo',
                             surname: 'LOL',
@@ -99,8 +98,8 @@ const CreateUserForm = () => {
                             email: 'ololo@lol.com',
                             address:
                                 'Улица Ололовича Оловского, оголо магазина "Луковица", дом 500, квартира 700',
-                        })
-                    }
+                        });
+                    }}
                 >
                     <InfoIcon />
                 </div>

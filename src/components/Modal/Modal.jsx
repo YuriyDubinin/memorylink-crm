@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 
-import './style/Modal.scss';
+import './Modal.scss';
 
 const Modal = ({isVisible = false, content, onClose}) => {
     const keydownHandler = ({key}) => {

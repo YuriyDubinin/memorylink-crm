@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './style/EditPage.scss';
+import './EditPage.scss';
 
 import UpdateUserForm from './elements/UpdateUserForm/UpdateUserForm';
 

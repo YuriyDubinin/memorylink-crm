@@ -7,7 +7,7 @@ import './style/UpdateUserForm.scss';
 
 import InfoIcon from './assets/info.svg?jsx';
 
-import {createUser} from '../../../../api/users';
+import {updateUser} from '../../../../api/users';
 
 import {validateSimpleRequired} from '../../../../helpers/validation';
 
@@ -23,7 +23,7 @@ const CreateUserForm = () => {
         mode: 'all',
         defaultValues: {
             date: Date.now(),
-            uniqueKey: '',
+            key: '',
             name: '',
             surname: '',
             patronymic: '',
@@ -38,7 +38,7 @@ const CreateUserForm = () => {
     });
 
     const fieldDescription = {
-        uniqueKey: 'Уникальный ключ пользователя',
+        key: 'Уникальный ключ пользователя',
         name: 'Имя пользователя',
         surname: 'Фамилия пользователя',
         patronymic: 'Отчество пользователя',
@@ -75,7 +75,7 @@ const CreateUserForm = () => {
             }
         }
 
-        createUser(formData)
+        updateUser(formData)
             .then((resp) => {
                 // eslint-disable-next-line no-undef
                 const clientHost = __CONFIG.connections.CLIENT_HOST;
@@ -103,7 +103,7 @@ const CreateUserForm = () => {
                                 <div
                                     className="update-user-form__info-icon"
                                     onClick={() => {
-                                        toast(fieldDescription.uniqueKey, {
+                                        toast(fieldDescription.key, {
                                             icon: 'ℹ️',
                                             duration: 1500,
                                         });
@@ -114,13 +114,13 @@ const CreateUserForm = () => {
                                 <input
                                     className="default-form__input"
                                     placeholder="Ключ"
-                                    {...register('uniqueKey', {
+                                    {...register('key', {
                                         validate: (value) => validateSimpleRequired(value, true),
                                     })}
                                 />
-                                {errors.uniqueKey && (
+                                {errors.key && (
                                     <span className="default-form__error-message">
-                                        {errors.uniqueKey?.message}
+                                        {errors.key?.message}
                                     </span>
                                 )}
                             </div>

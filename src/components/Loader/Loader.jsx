@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './style/Loader';
+import './Loader';
 
 import Spinner from './assets/spinner.svg?jsx';
 import WorldIcon from './assets/world.svg?jsx';

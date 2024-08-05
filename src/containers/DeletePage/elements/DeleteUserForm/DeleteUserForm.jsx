@@ -2,7 +2,7 @@ import React from 'react';
 import {useForm} from 'react-hook-form';
 import toast from 'react-hot-toast';
 
-import './style/DeleteUserForm.scss';
+import './DeleteUserForm.scss';
 
 import InfoIcon from './assets/info.svg?jsx';
 
