@@ -22,7 +22,7 @@ const CreateUserForm = () => {
     } = useForm({
         mode: 'all',
         defaultValues: {
-            date: Date.now(),
+            password: '',
             key: '',
             name: '',
             surname: '',
@@ -31,13 +31,13 @@ const CreateUserForm = () => {
             phone: '',
             address: '',
             closedAccount: false,
-            password: '',
             photos: null,
             videos: null,
         },
     });
 
     const fieldDescription = {
+        password: 'Пароль пользователя',
         key: 'Уникальный ключ пользователя',
         name: 'Имя пользователя',
         surname: 'Фамилия пользователя',
@@ -45,7 +45,6 @@ const CreateUserForm = () => {
         email: 'Емейл должен быть написан в стандартном формате и содержать в себе символ "@"',
         phone: 'Телефон пользователя должен начинаться с +7',
         address: 'Адрес проживания',
-        password: 'Пароль пользователя',
         photos: 'Фотографии',
         videos: 'Видео',
     };
@@ -99,6 +98,24 @@ const CreateUserForm = () => {
                             encType="multipart/form-data"
                             onSubmit={handleSubmit(onSubmit)}
                         >
+                            <div className="default-form__input-wrapper update-user-form__input">
+                                <div
+                                    className="update-user-form__info-icon"
+                                    onClick={() => {
+                                        toast(fieldDescription.password, {
+                                            icon: 'ℹ️',
+                                            duration: 1500,
+                                        });
+                                    }}
+                                >
+                                    <InfoIcon />
+                                </div>
+                                <input
+                                    className="default-form__input"
+                                    placeholder="Пароль"
+                                    {...register('password')}
+                                />
+                            </div>
                             <div className="default-form__input-wrapper update-user-form__input">
                                 <div
                                     className="update-user-form__info-icon"
@@ -263,7 +280,7 @@ const CreateUserForm = () => {
                                     </span>
                                 )}
                             </div>
-                            <div className="default-form__input-wrapper update-user-form__input">
+                            {/* <div className="default-form__input-wrapper update-user-form__input">
                                 <div
                                     className="update-user-form__info-icon"
                                     onClick={() => {
@@ -316,17 +333,7 @@ const CreateUserForm = () => {
                                         {errors.videos?.message}
                                     </span>
                                 )}
-                            </div>
-                            <div className="default-form__input-wrapper update-user-form__input">
-                                <label>
-                                    <input
-                                        {...register('closedAccount')}
-                                        type="checkbox"
-                                        className="default-form__checkbox"
-                                    />
-                                    <span>Закрытый аккаунт</span>
-                                </label>
-                            </div>
+                            </div> */}
                             <button
                                 type="submit"
                                 className="default-form__submit-btn update-user-form__submit-btn"

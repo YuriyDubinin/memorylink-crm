@@ -29,7 +29,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Memorulink CRM',
             template: './src/index.html',
-            favicon: './src/public/favicon.ico',
+            favicon: './public/favicon.ico',
             __CONFIG: JSON.stringify(JSON_CONFIG),
         }),
         new MiniCssExtractPlugin({

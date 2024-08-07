@@ -22,6 +22,7 @@ const CreateUserForm = () => {
     } = useForm({
         mode: 'all',
         defaultValues: {
+            password: '',
             name: '',
             surname: '',
             patronymic: '',
@@ -29,20 +30,19 @@ const CreateUserForm = () => {
             phone: '',
             address: '',
             closedAccount: false,
-            password: '',
             photos: null,
             videos: null,
         },
     });
 
     const fieldDescription = {
+        password: 'Пароль пользователя',
         name: 'Имя пользователя',
         surname: 'Фамилия пользователя',
         patronymic: 'Отчество пользователя',
         email: 'Емейл должен быть написан в стандартном формате и содержать в себе символ "@"',
         phone: 'Телефон пользователя должен начинаться с +7',
         address: 'Адрес проживания',
-        password: 'Пароль пользователя',
         photos: 'Фотографии',
         videos: 'Видео',
     };
@@ -112,6 +112,24 @@ const CreateUserForm = () => {
                             encType="multipart/form-data"
                             onSubmit={handleSubmit(onSubmit)}
                         >
+                            <div className="default-form__input-wrapper update-user-form__input">
+                                <div
+                                    className="update-user-form__info-icon"
+                                    onClick={() => {
+                                        toast(fieldDescription.password, {
+                                            icon: 'ℹ️',
+                                            duration: 1500,
+                                        });
+                                    }}
+                                >
+                                    <InfoIcon />
+                                </div>
+                                <input
+                                    className="default-form__input"
+                                    placeholder="Пароль"
+                                    {...register('password')}
+                                />
+                            </div>
                             <div className="default-form__input-wrapper create-user-form__input">
                                 <div
                                     className="create-user-form__info-icon"
