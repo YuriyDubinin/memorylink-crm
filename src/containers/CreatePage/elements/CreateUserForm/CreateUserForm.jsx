@@ -29,7 +29,6 @@ const CreateUserForm = () => {
             email: '',
             phone: '',
             address: '',
-            closedAccount: false,
             photos: null,
             videos: null,
         },
@@ -76,7 +75,7 @@ const CreateUserForm = () => {
             .then((resp) => {
                 // eslint-disable-next-line no-undef
                 const clientHost = __CONFIG.connections.CLIENT_HOST;
-                const totalLink = `${clientHost}/${resp.data.data.key}?id=${resp.data.data.id}`;
+                const totalLink = `${clientHost}/auth/${resp.data.data.key}?id=${resp.data.data.id}`;
 
                 setKey(resp.data.data.key);
                 setUserLink(totalLink);
@@ -335,17 +334,6 @@ const CreateUserForm = () => {
                                         {errors.videos?.message}
                                     </span>
                                 )}
-                            </div>
-
-                            <div className="default-form__input-wrapper create-user-form__input">
-                                <label>
-                                    <input
-                                        {...register('closedAccount')}
-                                        type="checkbox"
-                                        className="default-form__checkbox"
-                                    />
-                                    <span>Закрытый аккаунт</span>
-                                </label>
                             </div>
                             <button
                                 type="submit"

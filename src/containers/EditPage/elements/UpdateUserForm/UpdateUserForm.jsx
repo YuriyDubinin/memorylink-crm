@@ -78,7 +78,7 @@ const CreateUserForm = () => {
             .then((resp) => {
                 // eslint-disable-next-line no-undef
                 const clientHost = __CONFIG.connections.CLIENT_HOST;
-                const totalLink = `${clientHost}/${resp.data.data.key}?id=${resp.data.data.id}`;
+                const totalLink = `${clientHost}/auth/${resp.data.data.key}?id=${resp.data.data.id}`;
 
                 setKey(resp.data.data.key);
                 setUserLink(totalLink);
