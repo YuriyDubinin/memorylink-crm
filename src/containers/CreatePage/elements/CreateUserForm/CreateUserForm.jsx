@@ -307,7 +307,6 @@ const CreateUserForm = () => {
                                     </span>
                                 )}
                             </div>
-
                             <div className="default-form__input-wrapper create-user-form__input">
                                 <div
                                     className="create-user-form__info-icon"
